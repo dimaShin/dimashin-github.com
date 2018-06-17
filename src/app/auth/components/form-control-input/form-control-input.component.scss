@@ -1,0 +1,8 @@
+@import "app.theme";
+@import "~bootstrap/scss/_forms";
+
+.form-control-input {
+  .feedback {
+    display: none;
+  }
+}

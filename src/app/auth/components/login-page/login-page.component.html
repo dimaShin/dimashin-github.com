@@ -1,0 +1,54 @@
+<div class="container-fluid login-page page">
+  <div class="login-page-wrp">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="page-title">
+          Welcome to the best social network in the world!
+        </h1>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <form
+        class="login-form"
+        [formGroup]="authForm"
+        novalidate="true"
+        (submit)="handleSubmitClick()"
+      >
+        <div class="form-group row">
+          <label for="usernameControl" class="col-sm-3 col-xs-12 col-form-label">
+            Email:
+          </label>
+          <div class="col-sm-9 col-xs-12">
+            <app-form-control-input
+              [control]="username"
+              id="usernameControl"
+              type="text"
+              placeholder="John Smith"
+              [validators]="usernameValidators"
+            ></app-form-control-input>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="passwordControl" class="col-sm-3 col-xs-12 col-form-label">
+            Password:
+          </label>
+          <div class="col-sm-9 col-xs-12">
+            <app-form-control-input
+              [control]="password"
+              id="passwordControl"
+              type="password"
+              placeholder="8 characters, one small letter, one capital letter, one number"
+              [validators]="passwordValidators"
+              autocomplete="current-password"
+            ></app-form-control-input>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary submit" type="submit">
+            Log In
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

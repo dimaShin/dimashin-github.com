@@ -1,0 +1,16 @@
+@import "./app.theme";
+@import "~bootstrap/scss/_modal";
+
+.page {
+  box-sizing: border-box !important;
+  padding: 20px 0;
+}
+
+.placeholder {
+  color: transparent;
+  text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.border-box {
+  box-sizing: border-box !important;
+}

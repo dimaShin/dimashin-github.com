@@ -1,0 +1,21 @@
+<div
+  class="form-control-input"
+  [ngClass]="{'show-error': control && control.invalid && control.dirty}"
+>
+  <input
+    [id]="id"
+    class="form-control"
+    [ngClass]="{'is-invalid': control.dirty && control.errors, 'is-valid': control.valid}"
+    [type]="type"
+    [placeholder]="placeholder"
+    [formControl]="control"
+    [autocomplete]="autocomplete"
+  />
+  <div
+    *ngFor="let validator of validators"
+    class="feedback"
+    [ngClass]="{'invalid-feedback': control && control.errors && control.errors[validator.key]}"
+  >
+    {{validator.invalidMessage}}
+  </div>
+</div>

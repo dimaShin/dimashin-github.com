@@ -1,0 +1,47 @@
+<div class="container-fluid page">
+
+  <div class="row">
+
+    <div class="col-sm-6 col-md-4 col-xs-12">
+      <button
+        type="button"
+        class="btn btn-primary logout-btn"
+        (click)="handleLogout()"
+      >Log out</button>
+    </div>
+
+    <div class="input-group col-sm-6 col-md-8 col-xs-12 search-block">
+      <div class="input-group-prepend">
+        <span class="input-group-text">
+          <i class="fa fa-search"></i>
+        </span>
+      </div>
+      <input
+        class="form-control"
+        type="text"
+        placeholder="Start search..."
+        [(ngModel)]="searchQuery"
+      />
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div
+      class="col-xs-12 col-sm-6 col-md-4 feed-grid"
+      [@cardState]="post"
+      *ngFor="let post of posts | async | postFilter:searchQuery"
+
+    >
+      <div class="card" [routerLink]="['/post', post.id]">
+        <div class="card-body">
+          <h5 class="card-title">UserId: {{post.userId}}</h5>
+          <p class="card-text">Title: {{post.title}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

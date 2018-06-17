@@ -1,0 +1,31 @@
+@import "app.theme";
+@import "~bootstrap/scss/_buttons";
+@import "~bootstrap/scss/_input-group";
+@import "~bootstrap/scss/_forms";
+@import "~bootstrap/scss/_card";
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
+
+@media (max-width: breakpoint-max('xs')) {
+  .search-block {
+    margin-top: 10px;
+  }
+}
+
+.logout-btn {
+  width: 100%;
+}
+
+.feed-grid {
+  display: grid;
+
+  .card {
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 600ms;
+
+    &:hover {
+      box-shadow: 0 0 10px 1px rgba(0,0,0,.5)
+    }
+  }
+}

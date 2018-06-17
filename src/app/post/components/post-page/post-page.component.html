@@ -1,0 +1,33 @@
+<div class="container-fluid page">
+  <app-navigation-button
+    title="Go back"
+    target="/feed"
+  ></app-navigation-button>
+  <div class="row post-content">
+    <div class="col-md-12 post-header">
+      <h1>Details</h1>
+    </div>
+    <div class="col-md-12" [ngClass]="{'placeholder-block': !post}">
+
+      <p>
+        UserId:&nbsp;
+        <span class="dynamic-text" [innerHtml]="post?.userId | placeholder:'number'"></span>
+      </p>
+
+      <p>
+        Id:&nbsp;
+        <span class="dynamic-text" [innerHtml]="post?.id | placeholder:'number'"></span>
+      </p>
+
+      <p>
+        Title:&nbsp;
+        <span class="dynamic-text" [innerHtml]="post?.title | placeholder:'shortText'"></span>
+      </p>
+
+      <p>
+        Body:&nbsp;
+        <span class="dynamic-text" [innerHtml]="post?.body | placeholder:'paragraph'"></span>
+      </p>
+    </div>
+  </div>
+</div>

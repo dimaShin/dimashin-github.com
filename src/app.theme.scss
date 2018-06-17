@@ -1,0 +1,10 @@
+@import "~bootstrap/scss/bootstrap-reboot";
+@import "~bootstrap/scss/bootstrap-grid";
+
+$text-color-main: #202020;
+$text-color-title: #456783;
+
+@mixin text-align($value) {
+  text-align: $value;
+}
+
