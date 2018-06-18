@@ -10,7 +10,7 @@ export class AuthService implements CanActivate {
   private redirectAfterLoginTo: Array<string | number> = [environment.baseRoute];
 
   private static isAuthRoute(route: ActivatedRouteSnapshot) {
-    return route.url[0].path === environment.authRoute;
+    return route.routeConfig.path === environment.authRoute;
   }
 
   constructor(
