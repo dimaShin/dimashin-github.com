@@ -11,7 +11,7 @@ export interface Post {
   body: string;
 }
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class PostService {
 
   constructor( private fetch: HttpClient) { }

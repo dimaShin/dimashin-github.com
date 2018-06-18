@@ -10,6 +10,7 @@ import {
 } from '@angular/animations';
 import {map} from 'rxjs/internal/operators';
 import {AuthService} from '../../../shared/services/auth/auth.service';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-feed-page',
@@ -31,6 +32,7 @@ export class FeedPageComponent implements OnInit, OnDestroy {
 
   public posts: Observable<Post[]>;
   public searchQuery = '';
+  public postRouteBase = environment.postRouteBase;
 
   constructor(
     private postService: PostService,

@@ -17,39 +17,39 @@ import {environment} from '../environments/environment';
 
 const routes: Routes = [
   {
-    path: environment.authRoutePath,
+    path: environment.authRoute,
     loadChildren: './auth/auth.module#AuthModule',
     canActivate: [AuthService],
   },
   {
-    path: environment.baseRoutePath,
+    path: environment.feedRoute,
     loadChildren: './feed/feed.module#FeedModule',
     canActivate: [AuthService],
   },
   {
-    path: 'post/:id',
+    path: environment.postRoute,
     loadChildren: './post/post.module#PostModule',
     canActivate: [AuthService],
   },
   {
-    path: '',
-    redirectTo: environment.baseRoutePath,
+    path: environment.routeBase,
+    redirectTo: environment.baseRoute,
     pathMatch: 'full'
   },
   {
-    path: '404',
+    path: environment.notFoundRoute,
     pathMatch: 'full',
     loadChildren: './not-found/not-found.module#NotFoundModule',
   },
   {
     path: '**',
-    redirectTo: '404',
+    redirectTo: environment.notFoundRoute,
     pathMatch: 'full'
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { enableTracing: false })],
+  imports: [RouterModule.forRoot(routes, { enableTracing: environment.debugRouting })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

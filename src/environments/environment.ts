@@ -4,8 +4,14 @@
 
 export const environment = {
   production: false,
-  authRoutePath: 'auth',
-  baseRoutePath: 'feed',
+  routeBase: '',
+  authRoute: 'auth',
+  feedRoute: 'feed',
+  baseRoute: 'feed',
+  postRoute: 'posts/:id',
+  postRouteBase: 'posts',
+  notFoundRoute: '404',
+  debugRouting: false,
 };
 
 /*

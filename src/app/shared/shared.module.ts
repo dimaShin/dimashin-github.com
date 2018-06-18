@@ -23,8 +23,6 @@ import {TechnicalErrorDialogComponent} from './components/technical-error-dialog
     ModalModule.forRoot(),
   ],
   providers: [
-    AuthService,
-    PostService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorHandlerInterceptor,

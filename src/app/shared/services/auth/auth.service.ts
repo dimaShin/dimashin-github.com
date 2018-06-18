@@ -2,33 +2,30 @@ import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {environment} from '../../../../environments/environment';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthService implements CanActivate {
 
-  private _token: string = sessionStorage.getItem('session') || null;
+  private token: string = sessionStorage.getItem('session') || null;
 
-  private redirectAfterLoginTo: Array<string | number> = [environment.baseRoutePath];
+  private redirectAfterLoginTo: Array<string | number> = [environment.baseRoute];
 
   private static isAuthRoute(route: ActivatedRouteSnapshot) {
-    return route.url[0].path === environment.authRoutePath;
+    return route.url[0].path === environment.authRoute;
   }
 
   constructor(
     private router: Router
   ) { }
 
-  private set token(value: string) {
-    this._token = value;
+  private setToken(value: string) {
+
+    this.token = value;
 
     if (!value) {
       sessionStorage.removeItem('session');
     } else {
       sessionStorage.setItem('session', value);
     }
-  }
-
-  private get token(): string {
-    return this._token;
   }
 
   canActivate(
@@ -48,8 +45,7 @@ export class AuthService implements CanActivate {
 
   private redirectOnActivateFailed(route: ActivatedRouteSnapshot) {
     const isAuthRoute = AuthService.isAuthRoute(route);
-    const { baseRoutePath, authRoutePath } = environment;
-    const nextPath = isAuthRoute ? baseRoutePath : authRoutePath;
+    const nextPath = isAuthRoute ? environment.baseRoute : environment.authRoute;
 
     if (!isAuthRoute) {
       this.redirectAfterLoginTo = route.url.map(({ path }) => path);
@@ -59,12 +55,12 @@ export class AuthService implements CanActivate {
   }
 
   async login(user: string): Promise<void> {
-    this.token = btoa(user);
+    this.setToken(btoa(user));
     this.router.navigate(this.redirectAfterLoginTo);
   }
 
   logout() {
-    this.token = null;
-    this.router.navigate([environment.authRoutePath]);
+    this.setToken(null);
+    this.router.navigate([environment.authRoute]);
   }
 }
